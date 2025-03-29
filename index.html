@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Animations</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .animated-text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #2196F3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1976D2;
+        }
+
+        /* Animation Keyframes */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes rainbow {
+            0% { color: #FF0000; }
+            20% { color: #FF00FF; }
+            40% { color: #0000FF; }
+            60% { color: #00FFFF; }
+            80% { color: #00FF00; }
+            100% { color: #FF0000; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-text">Hello World</div>
+    <div class="controls">
+        <button onclick="changeAnimation('bounce')">Bounce</button>
+        <button onclick="changeAnimation('rotate')">Rotate</button>
+        <button onclick="changeAnimation('pulse')">Pulse</button>
+        <button onclick="changeAnimation('shake')">Shake</button>
+        <button onclick="changeAnimation('wave')">Wave</button>
+        <button onclick="changeAnimation('rainbow')">Rainbow</button>
+        <button onclick="changeAnimation('float')">Float</button>
+        <button onclick="changeAnimation('typing')">Typing</button>
+        <button onclick="changeAnimation('slideIn')">Slide In</button>
+        <button onclick="changeAnimation('fadeInOut')">Fade In/Out</button>
+    </div>
+
+    <script>
+        const text = document.querySelector('.animated-text');
+        let currentAnimation = 'bounce';
+
+        function changeAnimation(animationType) {
+            // Remove all previous animation classes
+            text.style.animation = 'none';
+            text.offsetHeight; // Trigger reflow
+
+            // Apply new animation
+            switch(animationType) {
+                case 'bounce':
+                    text.style.animation = 'bounce 2s infinite';
+                    break;
+                case 'rotate':
+                    text.style.animation = 'rotate 3s infinite linear';
+                    break;
+                case 'pulse':
+                    text.style.animation = 'pulse 1.5s infinite';
+                    break;
+                case 'shake':
+                    text.style.animation = 'shake 0.5s infinite';
+                    break;
+                case 'wave':
+                    text.style.animation = 'wave 2s infinite';
+                    break;
+                case 'rainbow':
+                    text.style.animation = 'rainbow 3s infinite';
+                    break;
+                case 'float':
+                    text.style.animation = 'float 3s infinite ease-in-out';
+                    break;
+                case 'typing':
+                    text.style.animation = 'typing 3.5s steps(40, end), blink .75s step-end infinite';
+                    text.style.whiteSpace = 'nowrap';
+                    text.style.overflow = 'hidden';
+                    text.style.borderRight = '3px solid';
+                    break;
+                case 'slideIn':
+                    text.style.animation = 'slideIn 1s ease-out';
+                    break;
+                case 'fadeInOut':
+                    text.style.animation = 'fadeInOut 2s infinite';
+                    break;
+            }
+            currentAnimation = animationType;
+        }
+
+        // Start with bounce animation
+        changeAnimation('bounce');
+    </script>
+</body>
+</html> 
