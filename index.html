@@ -124,6 +124,8 @@
         <button onclick="changeAnimation('typing')">Typing</button>
         <button onclick="changeAnimation('slideIn')">Slide In</button>
         <button onclick="changeAnimation('fadeInOut')">Fade In/Out</button>
+        <input type="text" id="nameInput" placeholder="Enter your name" />
+        <button onclick="updateName()">Submit</button>
     </div>
 
     <script>
@@ -172,6 +174,12 @@
                     break;
             }
             currentAnimation = animationType;
+        }
+
+        function updateName() {
+            const nameInput = document.getElementById('nameInput').value;
+            text.textContent = `Hello ${nameInput}`;
+            changeAnimation(currentAnimation); // Reapply the current animation
         }
 
         // Start with bounce animation
